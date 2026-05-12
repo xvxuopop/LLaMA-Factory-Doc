@@ -4,7 +4,6 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -22,9 +21,21 @@ msgstr ""
 msgid "开始使用"
 msgstr "Getting Started"
 
+#: ../../source/index.rst:34
+msgid "常见问题 <https://github.com/hiyouga/LLaMA-Factory/issues/4614>"
+msgstr "FAQ <https://github.com/hiyouga/LLaMA-Factory/issues/4614>"
+
+#: ../../source/index.rst:34
+msgid "常见问题"
+msgstr "FAQ"
+
 #: ../../source/index.rst:35
 msgid "高级选项"
 msgstr "Advanced"
+
+#: ../../source/index.rst:52
+msgid "多设备后端"
+msgstr "Multi-device Backends"
 
 #: ../../source/index.rst:2 fd8ae0c59b1749b7a93b79608f4c5bd5
 msgid "Welcome to LLaMA Factory!"

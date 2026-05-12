@@ -6,17 +6,17 @@ SFT 训练
 命令行
 -------------------------
 
-您可以使用以下命令使用 ``examples/train_lora/llama3_lora_sft.yaml`` 中的参数进行微调：
+您可以使用以下命令使用 ``examples/train_lora/qwen3_lora_sft.yaml`` 中的参数进行微调：
 
 .. code-block:: bash
 
-    llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
+    llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml
 
 也可以通过追加参数更新 yaml 文件中的参数:
 
 .. code-block:: bash
   
-  llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml \
+  llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml \
       learning_rate=1e-5 \
       logging_steps=1
 
@@ -26,30 +26,34 @@ SFT 训练
 
 .. _sft指令:
 
-``examples/train_lora/llama3_lora_sft.yaml`` 提供了微调时的配置示例。该配置指定了模型参数、微调方法参数、数据集参数以及评估参数等。您需要根据自身需求自行配置。
+``examples/train_lora/qwen3_lora_sft.yaml`` 提供了微调时的配置示例。该配置指定了模型参数、微调方法参数、数据集参数以及评估参数等。您需要根据自身需求自行配置。
 
 .. code-block:: yaml
 
-    ### examples/train_lora/llama3_lora_sft.yaml
-    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    ### examples/train_lora/qwen3_lora_sft.yaml
+    model_name_or_path: Qwen/Qwen3-4B-Instruct-2507
+    trust_remote_code: true
 
     stage: sft
     do_train: true
     finetuning_type: lora
+    lora_rank: 8
     lora_target: all
 
     dataset: identity,alpaca_en_demo
-    template: llama3
-    cutoff_len: 1024
+    template: qwen3_nothink
+    cutoff_len: 2048
     max_samples: 1000
-    overwrite_cache: true
     preprocessing_num_workers: 16
+    dataloader_num_workers: 4
 
-    output_dir: saves/llama3-8b/lora/sft
+    output_dir: saves/qwen3-4b/lora/sft
     logging_steps: 10
     save_steps: 500
     plot_loss: true
     overwrite_output_dir: true
+    save_only_model: false
+    report_to: none
 
     per_device_train_batch_size: 1
     gradient_accumulation_steps: 8
@@ -59,11 +63,13 @@ SFT 训练
     warmup_ratio: 0.1
     bf16: true
     ddp_timeout: 180000000
+    resume_from_checkpoint: null
 
-    val_size: 0.1
-    per_device_eval_batch_size: 1
-    eval_strategy: steps
-    eval_steps: 500
+    # eval_dataset: alpaca_en_demo
+    # val_size: 0.1
+    # per_device_eval_batch_size: 1
+    # eval_strategy: steps
+    # eval_steps: 500
 
 
 .. note:: 
