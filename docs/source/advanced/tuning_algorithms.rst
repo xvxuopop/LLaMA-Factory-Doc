@@ -18,7 +18,7 @@ Full Parameter Fine-tuning
 
 .. code-block:: yaml
 
-    ### examples/train_full/llama3_full_sft_ds3.yaml
+    ### examples/train_full/qwen3_full_sft.yaml
     # ...
     finetuning_type: full
     # ...

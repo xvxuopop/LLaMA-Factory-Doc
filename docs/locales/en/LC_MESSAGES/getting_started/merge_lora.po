@@ -1,177 +1,275 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2025, LlamaFactory team.
-# This file is distributed under the same license as the LLaMA Factory
-# package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# English translations for LLaMA Factory.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the LLaMA Factory project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: LLaMA Factory VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-05 01:10+0800\n"
+"POT-Creation-Date: 2026-04-29 14:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: OpenAI <support@openai.com>\n"
+"Language: en\n"
+"Language-Team: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.11.0\n"
 
-#: ../../source/getting_started/merge_lora.rst:2
-#: b5577aab55b64c7ab5b88a4aebd7d12d
+#: ../../source/getting_started/merge_lora.rst:2 cf68cb328c634f609e101d9ced12955d
+msgid "模型保存、LoRA 合并与量化"
+msgstr "Model Saving, LoRA Merging, and Quantization"
+
+#: ../../source/getting_started/merge_lora.rst:5 1202bc3c454041abb9ebbec0cc8790d5
+msgid "模型保存"
+msgstr "Model Saving"
+
+#: ../../source/getting_started/merge_lora.rst:8 fadaf83a9d4b4a44b8378e13476f7ae4
+msgid "模型保存路径"
+msgstr "Model Save Path"
+
+#: ../../source/getting_started/merge_lora.rst:10 1c40894be26a4f5b9d3b8fc02a0e4243
+msgid "训练相关产物默认都会围绕 ``output_dir`` 组织和保存。该目录通常包含最终模型、训练过程中的 checkpoint、Trainer state、日志以及 loss 图等内容。"
+msgstr ""
+"Training artifacts are organized and saved under ``output_dir`` by default. This directory "
+"usually contains the final model, checkpoints created during training, the Trainer state, logs, "
+"and loss plots."
+
+#: ../../source/getting_started/merge_lora.rst:16 6ff6e069cb174a2a816714465bc0fcee
+msgid "建议为不同实验设置独立的 ``output_dir``，便于区分不同配置下的训练结果，也方便后续继续训练或导出模型。"
+msgstr ""
+"It is recommended to use a separate ``output_dir`` for each experiment so that training results "
+"under different configurations are easy to distinguish and later resumption or model export is "
+"more convenient."
+
+#: ../../source/getting_started/merge_lora.rst:19 8fc924f5b8534a4b8dd006fc37b539ff
+msgid "Checkpoint 保存策略"
+msgstr "Checkpoint Saving Strategy"
+
+#: ../../source/getting_started/merge_lora.rst:21 3c21f993eadb46b39d7e23ee6cb71eeb
+msgid "LLaMA-Factory 的 checkpoint 保存行为主要由以下参数控制："
+msgstr "Checkpoint saving behavior in LLaMA-Factory is mainly controlled by the following parameters:"
+
+#: ../../source/getting_started/merge_lora.rst:23 2ea4ede6d6b446288a4aa85c2894f622
+msgid "``save_strategy``：控制保存策略，通常可设为 ``steps``、``epoch`` 或 ``no``。"
+msgstr "``save_strategy``: Controls the save strategy. Common values are ``steps``, ``epoch``, or ``no``."
+
+#: ../../source/getting_started/merge_lora.rst:24 2b0d6b574b06463fabe689b33e77457c
+msgid "``save_steps``：当 ``save_strategy: steps`` 时，每训练多少个 step 保存一次 checkpoint。"
+msgstr ""
+"``save_steps``: When ``save_strategy: steps`` is used, this controls how many training steps "
+"elapse before each checkpoint is saved."
+
+#: ../../source/getting_started/merge_lora.rst:25 2aec4cf447a04e929e772b0da33475c2
+msgid "``save_total_limit``：最多保留多少个 checkpoint，超过数量限制时会自动删除较旧的 checkpoint。"
+msgstr ""
+"``save_total_limit``: The maximum number of checkpoints to keep. Older checkpoints are deleted "
+"automatically when the limit is exceeded."
+
+#: ../../source/getting_started/merge_lora.rst:27 da7d63c86f2443e087e42a16d92a9b1c
+msgid "一个按 step 定期保存 checkpoint 的示例如下："
+msgstr "An example of saving checkpoints periodically by step is shown below:"
+
+#: ../../source/getting_started/merge_lora.rst:36 11b3ae45b4d9482d8ccc3522fa7e1762
+msgid "上述配置表示训练过程中每 200 个 step 保存一次 checkpoint，并且最多保留 3 个最近的 checkpoint。"
+msgstr ""
+"The configuration above saves one checkpoint every 200 training steps and keeps at most the 3 "
+"most recent checkpoints."
+
+#: ../../source/getting_started/merge_lora.rst:38 bf289f90630f41eb9db4d5c363519970
+msgid "如果希望按 epoch 保存，可改为："
+msgstr "If you want to save by epoch instead, use:"
+
+#: ../../source/getting_started/merge_lora.rst:44 d0af44fa184648e7a9842788e17a03cb
+msgid "如果不希望在训练过程中保存 checkpoint，可设为："
+msgstr "If you do not want to save checkpoints during training, use:"
+
+#: ../../source/getting_started/merge_lora.rst:51 321d74ee9ad243a9995fddc1b2a328f8
+msgid "仅保存模型权重"
+msgstr "Save Model Weights Only"
+
+#: ../../source/getting_started/merge_lora.rst:53 6286433808804e8b9b4e84c4a54f4f7d
+msgid "在某些只关心最终导出权重的场景下，可以设置 ``save_only_model: true``。此时通常只保存模型权重，而不保存 optimizer、scheduler 等训练状态文件。"
+msgstr ""
+"In scenarios where only the final exported weights matter, you can set ``save_only_model: true``."
+" In this case, usually only the model weights are saved, while optimizer, scheduler, and other "
+"training-state files are not."
+
+#: ../../source/getting_started/merge_lora.rst:59 770ad4410dbd4212a6b1aad8d6887647
+msgid "这样做可以减少磁盘占用，但通常不适合需要中途恢复训练的场景。因为缺少完整的训练状态，后续一般无法进行严格意义上的完整 resume。"
+msgstr ""
+"This reduces disk usage, but it is usually not suitable when you need to resume training midway. "
+"Without the full training state, a strict full resume is generally not possible later."
+
+#: ../../source/getting_started/merge_lora.rst:62 5a59e033133e49bb9780608baf8a03ba
+msgid "断点续训"
+msgstr "Resume Training from Checkpoint"
+
+#: ../../source/getting_started/merge_lora.rst:64 9d65d55cc88345979c710a30b677479d
+msgid "如果训练过程中中断，或希望从已有 checkpoint 继续训练，可以使用 ``resume_from_checkpoint`` 指定恢复路径。"
+msgstr ""
+"If training is interrupted, or if you want to continue training from an existing checkpoint, you "
+"can use ``resume_from_checkpoint`` to specify the recovery path."
+
+#: ../../source/getting_started/merge_lora.rst:71 1a35d6fe5fc54b5ab470d956da02120b
+msgid ""
+"通常建议 ``resume_from_checkpoint`` 指向某个具体的 checkpoint 目录，例如 ``checkpoint-1000``。恢复训练时，Trainer "
+"会尝试继续加载该 checkpoint 对应的模型参数以及训练状态。"
+msgstr ""
+"It is generally recommended that ``resume_from_checkpoint`` point to a specific checkpoint "
+"directory, such as ``checkpoint-1000``. When resuming training, Trainer attempts to continue "
+"loading the model parameters and training state corresponding to that checkpoint."
+
+#: ../../source/getting_started/merge_lora.rst:75 43e6eeae45cd46c587d9b9673f3ea481
+msgid ""
+"如果此前开启了 ``save_only_model: true``，由于未保存 optimizer、scheduler "
+"等状态，通常不能进行完整的断点续训。此时更适合将保存结果用于推理、评估或后续权重转换，而不是严格接续之前的训练进度。"
+msgstr ""
+"If ``save_only_model: true`` was enabled earlier, a complete checkpoint resume is usually not "
+"possible because optimizer, scheduler, and other state information were not saved. In this case, "
+"the saved result is better suited for inference, evaluation, or later weight conversion, rather "
+"than strictly continuing the previous training progress."
+
+#: ../../source/getting_started/merge_lora.rst:79 622c907ad60a486681dc204f681710a8
 msgid "LoRA 合并"
 msgstr "LoRA Merge"
 
-#: ../../source/getting_started/merge_lora.rst:5
-#: 47db7e8b42e9454a869f6be40965bc36
-msgid "合并"
-msgstr "Merge"
-
-#: ../../source/getting_started/merge_lora.rst:7
-#: df8ee9a509c14f4588b784b576150e7d
+#: ../../source/getting_started/merge_lora.rst:81 4f9864b899f54d2ba122358d72c1fea1
 msgid ""
-"当我们基于预训练模型训练好 LoRA 适配器后，我们不希望在每次推理的时候分别加载预训练模型和 LoRA 适配器，因此我们需要将预训练模型和 "
-"LoRA 适配器合并导出成一个模型，并根据需要选择是否量化。根据是否量化以及量化算法的不同，导出的配置文件也有所区别。"
+"当我们基于预训练模型训练好 LoRA 适配器后，我们不希望在每次推理的时候分别加载预训练模型和 LoRA 适配器，因此我们需要将预训练模型和 LoRA "
+"适配器合并导出成一个模型，并根据需要选择是否量化。根据是否量化以及量化算法的不同，导出的配置文件也有所区别。"
 msgstr ""
-"After training a LoRA adapter based on a pre-trained model, we don't want to load the pre-trained model and LoRA adapter separately during each inference. Therefore, we need to merge and export the pre-trained model and LoRA adapter into a merged model and choose whether to quantize as needed. The exported configuration file differs depending on whether quantization is used and which quantization algorithm is selected."
+"After training a LoRA adapter based on a pre-trained model, we do not want to load the pre-"
+"trained model and the LoRA adapter separately for every inference. Therefore, we need to merge "
+"and export the pre-trained model and the LoRA adapter into a single model, and optionally "
+"quantize it as needed. The exported configuration also differs depending on whether quantization "
+"is used and which quantization algorithm is selected."
 
-#: ../../source/getting_started/merge_lora.rst:9
-#: 2fea33c0477948da90ba148c1dd662af
+#: ../../source/getting_started/merge_lora.rst:83 3c05f91efb87419689705554ea15122a
 msgid ""
-"您可以通过 ``llamafactory-cli export merge_config.yaml`` 指令来合并模型。其中 "
-"``merge_config.yaml`` 需要您根据不同情况进行配置。"
+"您可以通过 ``llamafactory-cli export merge_config.yaml`` 指令来合并模型。其中 ``merge_config.yaml`` "
+"需要您根据不同情况进行配置。"
 msgstr ""
-"You can merge models using the command ``llamafactory-cli export merge_config.yaml``. "
-"The ``merge_config.yaml`` needs to be configured according to different situations."
+"You can merge models with the command ``llamafactory-cli export merge_config.yaml``. The "
+"``merge_config.yaml`` file should be configured according to your specific scenario."
 
-#: ../../source/getting_started/merge_lora.rst:11
-#: 7a11aee7f24f4310a18de87a3334c44b
-msgid "``examples/merge_lora/llama3_lora_sft.yaml`` 提供了合并时的配置示例。"
-msgstr "``examples/merge_lora/llama3_lora_sft.yaml`` provides a configuration example for merging."
+#: ../../source/getting_started/merge_lora.rst:85 f6264bb81439418e82d1c10852768abd
+msgid "``examples/merge_lora/qwen3_lora_sft.yaml`` 提供了合并时的配置示例。"
+msgstr "``examples/merge_lora/qwen3_lora_sft.yaml`` provides a configuration example for merging."
 
-#: ../../source/getting_started/merge_lora.rst:30
-#: ede2310ec40c4042af82d3a13dc3f9ae
+#: ../../source/getting_started/merge_lora.rst:104 12a56f556c634e69a219f3fbf6383d1a
 msgid ""
-"模型 ``model_name_or_path`` 需要存在且与 ``template`` 相对应。 "
-"``adapter_name_or_path`` 需要与微调中的适配器输出路径 ``output_dir`` 相对应。"
+"模型 ``model_name_or_path`` 需要存在且与 ``template`` 相对应。 ``adapter_name_or_path`` 需要与微调中的适配器输出路径 "
+"``output_dir`` 相对应。"
 msgstr ""
-"The model ``model_name_or_path`` must exist and correspond to the ``template``. "
-"And ``adapter_name_or_path`` must correspond to the adapter output path ``output_dir`` used during fine-tuning."
+"The model ``model_name_or_path`` must exist and match the ``template``. ``adapter_name_or_path`` "
+"must match the adapter output path ``output_dir`` used during fine-tuning."
 
-#: ../../source/getting_started/merge_lora.rst:31
-#: 55370c34341b4999903f981be9aa2d6c
+#: ../../source/getting_started/merge_lora.rst:105 3e7051825769462b8fd17b7bc04cba23
 msgid "合并 LoRA 适配器时，不要使用量化模型或指定量化位数。您可以使用本地或下载的未量化的预训练模型进行合并。"
-msgstr "When merging LoRA adapters, do not use quantized models or specify quantization bits. You can use local or downloaded unquantized pre-trained models for merging."
+msgstr ""
+"When merging LoRA adapters, do not use a quantized model or specify quantization bits. You can "
+"merge with a local or downloaded unquantized pre-trained model."
 
-#: ../../source/getting_started/merge_lora.rst:35
-#: 8662657120a04cb79c482ae7ce9dfd66
+#: ../../source/getting_started/merge_lora.rst:109 e5423b91ee6546c4af6fec7b962eb0b2
 msgid "量化"
 msgstr "Quantization"
 
-#: ../../source/getting_started/merge_lora.rst:37
-#: a3faffe950944cc7acfad87ada0653c8
+#: ../../source/getting_started/merge_lora.rst:111 cd650d340321495db98c2e00d0863b56
 msgid "在完成模型合并并获得完整模型后，为了优化部署效果，人们通常会基于显存占用、使用成本和推理速度等因素，选择通过量化技术对模型进行压缩，从而实现更高效的部署。"
-msgstr "After completing model merging and obtaining the complete model, to optimize deployment performance, people usually choose to compress the model through quantization techniques based on factors such as memory usage, cost, and inference speed, thereby achieving more efficient deployment."
+msgstr ""
+"After merging the model and obtaining a complete model, people usually compress it with "
+"quantization to optimize deployment, based on factors such as memory usage, cost, and inference "
+"speed."
 
-#: ../../source/getting_started/merge_lora.rst:39
-#: 99900a487b1b442b9870928e6ea58c7d
+#: ../../source/getting_started/merge_lora.rst:113 c4a1513d0e604481821d1719ed791df0
 msgid "量化（Quantization）通过数据精度压缩有效地减少了显存使用并加速推理。LLaMA-Factory 支持多种量化方法，包括:"
-msgstr "Quantization effectively reduces memory usage and accelerates inference through data precision compression. LLaMA-Factory supports multiple quantization methods, including:"
+msgstr ""
+"Quantization effectively reduces memory usage and speeds up inference by compressing numerical "
+"precision. LLaMA-Factory supports multiple quantization methods, including:"
 
-#: ../../source/getting_started/merge_lora.rst:41
-#: ea9ff8f775944c878809696aac4fd48b
+#: ../../source/getting_started/merge_lora.rst:115 adcc21df7f934521a6c2fa3b5dd3b745
 msgid "AQLM"
 msgstr "AQLM"
 
-#: ../../source/getting_started/merge_lora.rst:42
-#: 8b025911a8aa4606911dc9dbe0e0894f
+#: ../../source/getting_started/merge_lora.rst:116 2740b87f988b4fac9ec86838f2b492de
 msgid "AWQ"
 msgstr "AWQ"
 
-#: ../../source/getting_started/merge_lora.rst:43
-#: 04a77523af244517b26bbdef08e30b27
+#: ../../source/getting_started/merge_lora.rst:117 33b22e5fdbae4f8890cf4982437c43fe
 msgid "GPTQ"
 msgstr "GPTQ"
 
-#: ../../source/getting_started/merge_lora.rst:44
-#: cb70147f764c47debc40b32348ed48bf
+#: ../../source/getting_started/merge_lora.rst:118 266cc74086674d9494b93d491b223625
 msgid "QLoRA"
 msgstr "QLoRA"
 
-#: ../../source/getting_started/merge_lora.rst:45
-#: 95723d45f9e34aa787c95df7df72f45c
+#: ../../source/getting_started/merge_lora.rst:119 d303342c0305481c9aa908058d60c107
 msgid "..."
 msgstr "..."
 
-#: ../../source/getting_started/merge_lora.rst:47
-#: ef111db9f283405f956fb2060aef4cc8
+#: ../../source/getting_started/merge_lora.rst:121 402e6dcd33e84e858b934197c923ce39
 msgid ""
 "GPTQ 等后训练量化方法(Post Training "
 "Quantization)是一种在训练后对预训练模型进行量化的方法。我们通过量化技术将高精度表示的预训练模型转换为低精度的模型，从而在避免过多损失模型性能的情况下减少显存占用并加速推理，我们希望低精度数据类型在有限的表示范围内尽可能地接近高精度数据类型的表示，因此我们需要指定量化位数"
 " ``export_quantization_bit`` 以及校准数据集 ``export_quantization_dataset``。"
 msgstr ""
-"Post Training Quantization methods such as GPTQ are methods for quantizing pre-trained models after training. We convert pre-trained models represented in high precision to low precision models through quantization techniques, thereby reducing memory usage and accelerating inference while avoiding excessive loss of model performance. We want low-precision data types to approximate high-precision data type representations as closely as possible within a limited representation range, so we need to specify the quantization bits "
-"``export_quantization_bit`` and the calibration dataset ``export_quantization_dataset``."
+"Post-training quantization methods such as GPTQ quantize a pre-trained model after training. "
+"Quantization converts a high-precision pre-trained model into a lower-precision one so that "
+"memory usage is reduced and inference is accelerated while minimizing performance loss. To keep "
+"low-precision values as close as possible to high-precision representations within a limited "
+"range, you need to specify the quantization bits ``export_quantization_bit`` and the calibration "
+"dataset ``export_quantization_dataset``."
 
-#: ../../source/getting_started/merge_lora.rst:50
-#: b3d5fc2c8bf24623b43cae718155f016
+#: ../../source/getting_started/merge_lora.rst:124 75d79d3d808b42df869ecc10c72ea428
 msgid "在进行模型合并时，请指定："
-msgstr "When merging models, please specify:"
+msgstr "When merging a model, please specify:"
 
-#: ../../source/getting_started/merge_lora.rst:52
-#: 65386c7326354a75a6d3a0eeb11be963
+#: ../../source/getting_started/merge_lora.rst:126 ab0f490b1c764c8f8c17645d6215e2b4
 msgid "``model_name_or_path``: 预训练模型的名称或路径"
 msgstr "``model_name_or_path``: Name or path of the pre-trained model"
 
-#: ../../source/getting_started/merge_lora.rst:53
-#: c123caf97ac4423bbadefa14eda5eff8
+#: ../../source/getting_started/merge_lora.rst:127 4f166a30b29045e7bca96f20db3d5f9a
 msgid "``template``: 模型模板"
 msgstr "``template``: Model template"
 
-#: ../../source/getting_started/merge_lora.rst:54
-#: dd1ef24670584eefb1b99c61aec39dd3
+#: ../../source/getting_started/merge_lora.rst:128 05b527dba3f645c0a33f9a20a3e6a4e3
 msgid "``export_dir``: 导出路径"
 msgstr "``export_dir``: Export path"
 
-#: ../../source/getting_started/merge_lora.rst:55
-#: fc705891d4b04f77bb8ef87edbad88c4
+#: ../../source/getting_started/merge_lora.rst:129 007fc23fc7344fba93140090c03ab4ad
 msgid "``export_quantization_bit``: 量化位数"
-msgstr "``export_quantization_bit``: Quantization bits"
+msgstr "``export_quantization_bit``: Quantization bit width"
 
-#: ../../source/getting_started/merge_lora.rst:56
-#: 330186ccef2542f78b7bea1b202a0950
+#: ../../source/getting_started/merge_lora.rst:130 054720c0010448638dca0c6bcbffd408
 msgid "``export_quantization_dataset``: 量化校准数据集"
 msgstr "``export_quantization_dataset``: Quantization calibration dataset"
 
-#: ../../source/getting_started/merge_lora.rst:57
-#: 8e5a5ac6899a42859f1630cbb8dc576a
+#: ../../source/getting_started/merge_lora.rst:131 01f46868a25340739b275aab918b60ef
 msgid "``export_size``: 最大导出模型文件大小"
-msgstr "``export_size``: Maximum export model file size"
+msgstr "``export_size``: Maximum exported model shard size"
 
-#: ../../source/getting_started/merge_lora.rst:58
-#: ffe07574951b4e1f8efc9fcc308386bb
+#: ../../source/getting_started/merge_lora.rst:132 fa9ced25525f4d2e886adbf168b46616
 msgid "``export_device``: 导出设备"
 msgstr "``export_device``: Export device"
 
-#: ../../source/getting_started/merge_lora.rst:59
-#: 4f503e2db12e4f799529c4d979b06ca2
+#: ../../source/getting_started/merge_lora.rst:133 b1dc4f609abc4442a6036dfbc2c38255
 msgid "``export_legacy_format``: 是否使用旧格式导出"
-msgstr "``export_legacy_format``: Whether to export in legacy format"
+msgstr "``export_legacy_format``: Whether to export in the legacy format"
 
-#: ../../source/getting_started/merge_lora.rst:61
-#: ../../source/getting_started/merge_lora.rst:84
-#: 8bcc6a20d815430ba4d47f46463e3836 cae57b9aebb34af98ae7cb8d98da6baf
+#: ../../source/getting_started/merge_lora.rst:135 ../../source/getting_started/merge_lora.rst:158
+#: 7eb4eaa9e2cd4318b161b80d43d80fe9 a226381a15e54f46a675af25b3027e86
 msgid "下面提供一个配置文件示例："
-msgstr "Below is an example configuration file:"
+msgstr "A sample configuration is shown below:"
 
-#: ../../source/getting_started/merge_lora.rst:79
-#: 4901711dcdc54c73a1711dd12cc8dd6d
+#: ../../source/getting_started/merge_lora.rst:153 bbbfdcd9291443d094bf03be9fa3998e
 msgid "QLoRA 是一种在 4-bit 量化模型基础上使用 LoRA 方法进行训练的技术。它在极大地保持了模型性能的同时大幅减少了显存占用和推理时间。"
-msgstr "QLoRA is a technique that uses the LoRA method for training on 4-bit quantized models. It greatly maintains model performance while significantly reducing memory usage and inference time."
+msgstr ""
+"QLoRA trains with the LoRA method on top of a 4-bit quantized model. It greatly reduces memory "
+"usage and inference time while preserving model performance to a large extent."
 
-#: ../../source/getting_started/merge_lora.rst:82
-#: ba2451479a4b4765bbb4b5236f0c642c
+#: ../../source/getting_started/merge_lora.rst:156 92035ea31f7b470c83bd51b1213ec8c7
 msgid "不要使用量化模型或设置量化位数 ``quantization_bit``"
-msgstr "Do not use quantized models or set quantization bits ``quantization_bit``"
-
+msgstr "Do not use a quantized model or set the quantization bit width ``quantization_bit``"

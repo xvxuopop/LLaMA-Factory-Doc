@@ -31,6 +31,7 @@ Documentation
   getting_started/merge_lora
   getting_started/inference
   getting_started/eval
+  常见问题 <https://github.com/hiyouga/LLaMA-Factory/issues/4614>
 
 .. toctree::
   :maxdepth: 3
@@ -42,11 +43,13 @@ Documentation
   advanced/quantization
   advanced/trainers
   advanced/monitor
-  advanced/npu_installation
-  advanced/npu_training
-  advanced/npu_inference
   advanced/arguments
   advanced/model_support
   advanced/extras
   advanced/best_practice/index
 
+.. toctree::
+  :maxdepth: 3
+  :caption: 多设备后端
+
+  multibackend/npu/index

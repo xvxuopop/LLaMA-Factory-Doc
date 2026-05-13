@@ -19,10 +19,11 @@ LLaMA-Factory 支持多种推理方式。
 
 .. code-block:: yaml
 
-    ### examples/inference/llama3.yaml
-    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
-    template: llama3
+    ### examples/inference/qwen3.yaml
+    model_name_or_path: Qwen/Qwen3-4B-Instruct-2507
+    template: qwen3_nothink
     infer_backend: huggingface #choices： [huggingface, vllm]  
+    trust_remote_code: true
 
 
 微调模型推理配置
@@ -31,12 +32,12 @@ LLaMA-Factory 支持多种推理方式。
 
 .. code-block:: yaml
 
-    ### examples/inference/llama3_lora_sft.yaml
-    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
-    adapter_name_or_path: saves/llama3-8b/lora/sft
-    template: llama3
-    finetuning_type: lora
+    ### examples/inference/qwen3_lora_sft.yaml
+    model_name_or_path: Qwen/Qwen3-4B-Instruct-2507
+    adapter_name_or_path: saves/qwen3-4b/lora/sft
+    template: qwen3_nothink
     infer_backend: huggingface #choices： [huggingface, vllm]
+    trust_remote_code: true
 
 
 多模态模型
@@ -46,15 +47,16 @@ LLaMA-Factory 支持多种推理方式。
 
 .. code-block:: bash
 
-    llamafactory-cli webchat examples/inference/llava1_5.yaml
+    llamafactory-cli webchat examples/inference/qwen3vl.yaml
 
-``examples/inference/llava1_5.yaml`` 的配置示例如下：
+``examples/inference/qwen3vl.yaml`` 的配置示例如下：
 
 .. code-block:: yaml
 
-    model_name_or_path: llava-hf/llava-1.5-7b-hf
-    template: vicuna
+    model_name_or_path: Qwen/Qwen3-VL-4B-Instruct
+    template: qwen3_vl
     infer_backend: huggingface #choices： [huggingface, vllm]
+    trust_remote_code: true
     
 
 
@@ -85,16 +87,16 @@ api
 
 .. code-block:: yaml
 
-    ### examples/inference/llama3_lora_sft.yaml
-    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
-    adapter_name_or_path: saves/llama3-8b/lora/sft
-    template: llama3
-    finetuning_type: lora
+    ### examples/inference/qwen3_lora_sft.yaml
+    model_name_or_path: Qwen/Qwen3-4B-Instruct-2507
+    adapter_name_or_path: saves/qwen3-4b/lora/sft
+    template: qwen3_nothink
+    trust_remote_code: true
 
 
 下面是一个启动并调用 api 服务的示例：
 
-您可以使用 ``API_PORT=8000 CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/inference/llama3_lora_sft.yaml`` 启动 api 服务并运行以下示例程序进行调用：
+您可以使用 ``API_PORT=8000 CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/inference/qwen3_lora_sft.yaml`` 启动 api 服务并运行以下示例程序进行调用：
 
 .. code-block:: python
 
@@ -102,7 +104,7 @@ api
     from openai import OpenAI
     client = OpenAI(api_key="0",base_url="http://0.0.0.0:8000/v1")
     messages = [{"role": "user", "content": "Who are you?"}]
-    result = client.chat.completions.create(messages=messages, model="meta-llama/Meta-Llama-3-8B-Instruct")
+    result = client.chat.completions.create(messages=messages, model="Qwen/Qwen3-4B-Instruct-2507")
     print(result.choices[0].message)
 
 

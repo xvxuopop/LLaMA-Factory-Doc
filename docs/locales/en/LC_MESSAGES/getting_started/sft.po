@@ -27,8 +27,8 @@ msgid "命令行"
 msgstr "Command Line"
 
 #: ../../source/getting_started/train.rst:10
-msgid "您可以使用以下命令使用 ``examples/train_lora/llama3_lora_sft.yaml`` 中的参数进行微调："
-msgstr "You can fine-tune using the parameters in ``examples/train_lora/llama3_lora_sft.yaml`` with the following command:"
+msgid "您可以使用以下命令使用 ``examples/train_lora/qwen3_lora_sft.yaml`` 中的参数进行微调："
+msgstr "You can fine-tune using the parameters in ``examples/train_lora/qwen3_lora_sft.yaml`` with the following command:"
 
 #: ../../source/getting_started/train.rst:14
 msgid "也可以通过追加参数更新 yaml 文件中的参数:"
@@ -40,10 +40,10 @@ msgstr "By default, LLaMA-Factory uses all visible computing devices. You can sp
 
 #: ../../source/getting_started/sft.rst:19 9bb225e0f4024c1d836eadba17cfa492
 msgid ""
-"``examples/train_lora/llama3_lora_sft.yaml`` "
+"``examples/train_lora/qwen3_lora_sft.yaml`` "
 "提供了微调时的配置示例。该配置指定了模型参数、微调方法参数、数据集参数以及评估参数等。您需要根据自身需求自行配置。"
 msgstr ""
-"``examples/train_lora/llama3_lora_sft.yaml`` "
+"``examples/train_lora/qwen3_lora_sft.yaml`` "
 "provides a configuration example for fine-tuning. This configuration specifies model parameters, fine-tuning method parameters, dataset parameters, evaluation parameters, etc. You need to configure them according to your own needs."
 
 #: ../../source/getting_started/sft.rst:60 f6a9f7b242024cee97999596f7fd6454
