@@ -181,6 +181,28 @@ msgstr ""
 msgid "**开始训练**："
 msgstr "**Start training**:"
 
+#: ../../source/multibackend/npu/npu_training.rst:101 11b7b975b66644bcb39dfc554ba56b56
+msgid "下载模型时，如果无法顺利访问 Hugging Face 社区资源下载，推荐前往 ModelScope 下载，或按需配置以下参数："
+msgstr ""
+"When downloading models, if you cannot access Hugging Face community resources smoothly, we "
+"recommend downloading them from ModelScope or configuring the following parameters as needed:"
+
+#: ../../source/multibackend/npu/npu_training.rst:103 3f2daff9f9564772a5c71d3af1553461
+msgid "设置 ``USE_MODELSCOPE_HUB`` 环境变量，优先使用 ModelScope 下载模型/数据集或使用缓存路径中的模型/数据集："
+msgstr ""
+"Set the ``USE_MODELSCOPE_HUB`` environment variable to prioritize downloading models/datasets "
+"from ModelScope or using models/datasets from the cache path:"
+
+#: ../../source/multibackend/npu/npu_training.rst:109 a82950bcbd53423b863bfa0850cf4e12
+msgid "如需访问受限或私有的 ModelScope Hub 资源，可配置 ``ms_hub_token``。"
+msgstr "To access restricted or private ModelScope Hub resources, configure ``ms_hub_token``."
+
+#: ../../source/multibackend/npu/npu_training.rst:111 115619b93b0148088bde78c0e5eb61aa
+msgid "更多参数说明请参考 :doc:`参数介绍 <../../advanced/arguments>`。下载前需关注待下载文件的正确性与安全性。"
+msgstr ""
+"For more parameter details, refer to :doc:`Arguments <../../advanced/arguments>`. Before "
+"downloading, pay attention to the correctness and security of the files to be downloaded."
+
 #: ../../source/multibackend/npu/npu_training.rst:106 6002060779a34fb2895a072077698b6a
 msgid "常用调参建议"
 msgstr "Common Tuning Tips"

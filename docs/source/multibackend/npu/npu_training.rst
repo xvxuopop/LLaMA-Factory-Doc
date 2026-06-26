@@ -95,8 +95,20 @@ LLaMA-Factory 当前已适配以下昇腾 NPU 设备：
 
       source /usr/local/Ascend/ascend-toolkit/set_env.sh
 
-
 3. **开始训练**：
+
+   .. note::
+      下载模型时，如果无法顺利访问 Hugging Face 社区资源下载，推荐前往 ModelScope 下载，或按需配置以下参数：
+
+      - 设置 ``USE_MODELSCOPE_HUB`` 环境变量，优先使用 ModelScope 下载模型/数据集或使用缓存路径中的模型/数据集：
+
+        .. code-block:: bash
+
+           export USE_MODELSCOPE_HUB=1
+
+      - 如需访问受限或私有的 ModelScope Hub 资源，可配置 ``ms_hub_token``。
+
+      更多参数说明请参考 :doc:`参数介绍 <../../advanced/arguments>`。下载前需关注待下载文件的正确性与安全性。
 
    .. code-block:: bash
 
